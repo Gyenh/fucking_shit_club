@@ -1,0 +1,17 @@
+<% if logged_in? %>
+
+<h1> Voici tous les membres du Club échangiste </h1>
+
+<% @users.each do |user| %>
+<p>Nom : <%= user.last_name %></p>
+<p>Prenom : <%= user.first_name %></p>
+<p>Email : <%= user.email %></p>
+
+<hr>
+
+<% end %>
+
+<% else %>
+<h1>Vous devez être connecté pour acceder à cette page</h1>
+<%= link_to "CONNECTE TOI OU INSCRIT TOI POUR Y ACCEDER !", login_path, class:"btn btn-danger" %>
+<% end %>
