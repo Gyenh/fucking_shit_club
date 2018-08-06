@@ -1,24 +1,26 @@
-# README
+# Club de merde
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lien du Heroku : [Shit-Club](https://shit-club.herokuapp.com/).
 
-Things you may want to cover:
+N'oubliez pas de faire un :
 
-* Ruby version
+`bundle install --without production`
 
-* System dependencies
+Je n'ai pas utilisé la `gem pg`
 
-* Configuration
+# TDD
 
-* Database creation
+Il n'y a que certains tests qui fonctionnent, ceux cités ci-dessous : 
 
-* Database initialization
+- Les tests de modèles
 
-* How to run the test suite
+- Tester les views :
+  - Tester la page d'inscription
+  - Tester la page de login
+  - Tester la page du club
+  
+- Et les features
 
-* Services (job queues, cache servers, search engines, etc.)
+# Contributor
 
-* Deployment instructions
-
-* ...
+Gino / Slack @Gino
