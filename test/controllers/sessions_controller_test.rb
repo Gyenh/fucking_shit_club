@@ -51,7 +51,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to @user
     follow_redirect!
     get root_path
-#    assert_select "a[href=?]", current_user
   end
 
   #vérification du lien logout de la nav bar
@@ -64,4 +63,5 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       follow_redirect!
       assert_select "email:#{@user.email}"
     end
+
 end
