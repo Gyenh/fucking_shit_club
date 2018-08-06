@@ -1,39 +1,46 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get secret_path
+
+  def setup
+    @user = users(:michael)
+    @other_user = users(:archer)
+  end
+
+
+  test "should get new" do
+    get signup_path
     assert_response :success
   end
 
-  # test "should get new" do
-  #   get users_new_url
-  #   assert_response :success
-  # end
+  test "should redirect edit when not logged in" do
+  get edit_user_path(@user)
+  assert_not flash.empty?
+  assert_redirected_to login_url
+end
 
-  # test "should get create" do
-  #   get users_create_url
-  #   assert_response :success
-  # end
+test "should redirect update when not logged in" do
+  patch user_path(@user), params: { user: { first_name: @user.first_name,
+                                            last_name: @user.last_name,
+                                            email: @user.email } }
+  assert_not flash.empty?
+  assert_redirected_to login_url
+end
 
-  # test "should get show" do
-  #   get users_show_url
-  #   assert_response :success
-  # end
+test "should redirect edit when logged in as wrong user" do
+  log_in_as(@other_user)
+  get edit_user_path(@user)
+  assert flash.empty?
+  assert_redirected_to root_url
+end
 
-  # test "should get edit" do
-  #   get users_edit_url
-  #   assert_response :success
-  # end
-
-  # test "should get update" do
-  #   get users_update_url
-  #   assert_response :success
-  # end
-
-  # test "should get destroy" do
-  #   get users_destroy_url
-  #   assert_response :success
-  # end
+test "should redirect update when logged in as wrong user" do
+  log_in_as(@other_user)
+  patch user_path(@user), params: { user: { first_name: @user.first_name,
+                                            last_name: @user.last_name,
+                                            email: @user.email } }
+  assert flash.empty?
+  assert_redirected_to root_url
+end
 
 end

@@ -12,6 +12,7 @@
 <% end %>
 
 <% else %>
-<h1>Vous devez être connecté pour acceder à cette page</h1>
-<%= link_to "CONNECTE TOI OU INSCRIT TOI POUR Y ACCEDER !", login_path, class:"btn btn-danger" %>
+<%= flash[:danger] = "Vous devez être connecté pour acceder à cette page" %>
+
+<%= link_to "CONNECTE TOI !", login_path, class:"btn btn-danger" %>
 <% end %>

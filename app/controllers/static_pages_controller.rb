@@ -3,5 +3,6 @@ class StaticPagesController < ApplicationController
   end
 
   def secret
+    @users = User.all
   end
 end
